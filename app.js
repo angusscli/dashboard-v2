@@ -49,9 +49,8 @@ io.on('connection', function (socket) {
 	if (data3!="") {
 		io.emit('chart3', data3);
 	}
-	total='{"type":"total","currentuser":"1","total":"1","engagement":"20","successrate":"50"}';
-	if (total!="") {
-		io.emit('user',total)
+	if (data5!="") {
+		io.emit('user',data5)
 	}
 
     //var test = '{"type":"total","currentuser":"1","total":"1","engagement":"20","successrate":"50"}';
@@ -139,7 +138,7 @@ const messageHandler5 = message => {
 	  
 
 	    
-subscription4.on(`message`, messageHandler5);
+subscription5.on(`message`, messageHandler5);
 
 
 

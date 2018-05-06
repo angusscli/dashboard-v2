@@ -44,10 +44,10 @@ io.on('connection', function (socket) {
 	if (data2!="") {
 		io.emit('chart2', JSON.stringify(pluginArrayArg));
 	}
-	/*
+	
 	if (data3!="") {
 		io.emit('chart3', data3);
-	}*/
+	}
 });
 
   // [START pubsub_listen_messages]

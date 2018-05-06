@@ -81,7 +81,7 @@ console.log("chart3 socket.on");
     		} else if (data.type=='cnbc') {
     			item = item+"<img src='/img/cnbc.png' height='50'>";
     		}
-    		item = item+"</td><td style='font-size:9pt'>[Score: "+data.score+"] "+data.title+"</td></tr></table></li>";
+    		item = item+"</td><td style='font-size:9pt'>["+data.date+"] "+data.title+" [Score: "+data.score+"] </td></tr></table></li>";
        
     		$( "#ul-news" ).first().prepend( item );
        

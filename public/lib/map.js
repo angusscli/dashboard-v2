@@ -248,17 +248,17 @@ latlong["ZM"] = {"latitude":-15, "longitude":30};
 latlong["ZW"] = {"latitude":-20, "longitude":30};
 
 var mapData = [
+{"code":"HK" , "name":"Hong Kong, China", "value":1, "color":"#eea638"},
 {"code":"AU" , "name":"Australia", "value":1, "color":"#8aabb0"},
 {"code":"CN" , "name":"China", "value":1, "color":"#eea638"},
 {"code":"DE" , "name":"Germany", "value":1, "color":"#d8854f"},
-{"code":"HK" , "name":"Hong Kong, China", "value":20, "color":"#eea638"},
 {"code":"IT" , "name":"Italy", "value":1, "color":"#d8854f"},
 {"code":"KR" , "name":"Korea, Rep.", "value":1, "color":"#eea638"},
 {"code":"SG" , "name":"Singapore", "value":1, "color":"#eea638"},
 {"code":"CH" , "name":"Switzerland", "value":1, "color":"#d8854f"},
 {"code":"TH" , "name":"Thailand", "value":1, "color":"#eea638"},
-{"code":"GB" , "name":"United Kingdom", "value":10, "color":"#d8854f"},
-{"code":"US" , "name":"United States", "value":15, "color":"#a7a737"}
+{"code":"GB" , "name":"United Kingdom", "value":2, "color":"#d8854f"},
+{"code":"US" , "name":"United States", "value":2, "color":"#a7a737"}
 ];
 
 
@@ -296,8 +296,7 @@ for ( var i = 0; i < mapData.length; i++ ) {
 
   images.push( {
     "type": "circle",
-"theme": "none",
-
+    "theme": "none",
     "width": size,
     "height": size,
     "color": dataItem.color,
@@ -321,6 +320,48 @@ var map = AmCharts.makeChart( "chartdiv", {
     "images": images
   },
   "export": {
-    "enabled": true
+    "enabled": false
   }
 } );
+
+socket.on('user', function(no){
+	  var json = JSON.parse(no);
+
+	  if (json.type=='total') {
+			var images = [];
+			for ( var i = 0; i < mapData.length; i++ ) {
+			  var dataItem = mapData[ i ];
+			  var value = dataItem.value;
+
+			  if (dataItem.code=='HK') {
+				  value = json.total;
+			  }
+			  
+			  // calculate size of a bubble
+			  var square = ( value - min ) / ( max - min ) * ( maxSquare - minSquare ) + minSquare;
+			  if ( square < minSquare ) {
+			    square = minSquare;
+			  }
+			  var size = Math.sqrt( square / ( Math.PI * 2 ) );
+			  var id = dataItem.code;
+			  
+
+
+			  images.push( {
+			    "type": "circle",
+			    "theme": "none",
+			    "width": size,
+			    "height": size,
+			    "color": dataItem.color,
+			    "longitude": latlong[ id ].longitude,
+			    "latitude": latlong[ id ].latitude,
+			    "title": dataItem.name,
+			    "value": value
+			  } );
+			}
+			
+			map.dataProvider.images = images;
+			map.validateData();
+	  }  
+	
+});

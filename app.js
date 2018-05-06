@@ -11,6 +11,7 @@ var data2="";
 var data3="";
 var data4="";
 var data5="";
+var total="";
 var pluginArrayArg;
 
 
@@ -48,6 +49,14 @@ io.on('connection', function (socket) {
 	if (data3!="") {
 		io.emit('chart3', data3);
 	}
+	total='{"type":"total","currentuser":"1","total":"1","engagement":"20","successrate":"50"}';
+	if (total!="") {
+		io.emit('user',total)
+	}
+
+    //var test = '{"type":"total","currentuser":"1","total":"1","engagement":"20","successrate":"50"}';
+    
+	//io.emit('map', 1);
 });
 
   // [START pubsub_listen_messages]
@@ -59,13 +68,13 @@ io.on('connection', function (socket) {
   const pubsub2 = new PubSub();
   const pubsub3 = new PubSub();
   const pubsub4 = new PubSub();
-  //const pubsub5 = new PubSub();
+  const pubsub5 = new PubSub();
   
   const subscriptionName = 'db-subscription';
   const subscriptionName2 = 'db2-subscription';
   const subscriptionName3 = 'db3-subscription';
   const subscriptionName4 = 'txn-subscription';
-  //const subscriptionName5 = 'news-subscription2';
+  const subscriptionName5 = 'user-subscription';
   
   const timeout = 60;
 
@@ -74,7 +83,7 @@ io.on('connection', function (socket) {
   const subscription2 = pubsub2.subscription(subscriptionName2);
   const subscription3 = pubsub3.subscription(subscriptionName3);
   const subscription4 = pubsub4.subscription(subscriptionName4);
-  //const subscription5 = pubsub5.subscription(subscriptionName5);
+  const subscription5 = pubsub5.subscription(subscriptionName5);
   
   
   // subscription message handler
@@ -106,6 +115,31 @@ const messageHandler4 = message => {
 
 	    
 subscription4.on(`message`, messageHandler4);
+
+
+
+//subscription message handler
+const messageHandler5 = message => {
+	    console.log(`Received message ${message.id}:`);
+	    console.log(`\tData 5: ${message.data}`);
+	    
+	    data5 = `${message.data}`;
+	    //io.emit('txn', data5);
+	    
+	    //io.emit('map',data5);
+	    io.emit('user',data5);
+	    
+	    //{'type':'login','sessionId':'0'}
+	    //{'type':'logout','sessionId':'0','time':'','success':'1'}
+	    //{'type':'total','currentuser':'1','total':'10','engagement':'20','successrate':'50'}
+	    
+
+	    message.ack();
+	  };
+	  
+
+	    
+subscription4.on(`message`, messageHandler5);
 
 
 

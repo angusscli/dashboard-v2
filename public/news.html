@@ -34,8 +34,9 @@
     <script src="./js/main.js"></script>
     <script src="./lib/map.js"></script>
     
-        <script src="./js/data2.js"></script>
-        <script src="./js/chart6.js"></script> 
+        <script src="./js/data.js"></script>
+        <script src="./js/chart3.js"></script>
+        <script src="./js/chart1.js"></script>  
         <script src="./js/txn.js"></script>
         <!-- 
         <script src="./js/news.js"></script> -->
@@ -50,7 +51,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-         <span class="navbar-brand"><img height='30' src='../img/icon40.png'/> AlphaStock User Engagement Realtime Dashboard</span>
+         <span class="navbar-brand"><img height='30' src='../img/icon40.png'/> AlphaStock Realtime Dashboard</span>
       </div>
     </div>
   </div>
@@ -62,18 +63,18 @@
           <div class="chart-title">
             CURRENT CHATBOT NO. OF USERS
           </div>
-          <div class="chart-stage" style="height:80px;text-align: center;">
-            <span style="font-size:36px;" id="currentuser">--</span>
+          <div class="chart-stage" style="height:50px">
+            <span style="font-size:26px;" id="currentuser">--</span>
           </div>
           </div>
       </div>
       <div class="col-sm-3">
       	<div class="chart-wrapper">
           <div class="chart-title">
-             TOTAL NO. OF CHATBOT USERS
+             TOTAL CHATBOT USAGE
           </div>
-          <div class="chart-stage" style="height:80px;text-align: center;">
-            <span style="font-size:36px;" id='total'>--</span>
+          <div class="chart-stage" style="height:50px">
+            <span style="font-size:26px;" id='total'>--</span>
           </div>
           </div>
       </div>
@@ -82,8 +83,8 @@
           <div class="chart-title">
             AVG. ENGAGEMENT DURATION (MINS)
           </div>
-          <div class="chart-stage" style="height:80px;text-align: center;">
-            <span style="font-size:36px;" id="engagement">--</span>
+          <div class="chart-stage" style="height:50px">
+            <span style="font-size:26px;" id="engagement">--</span>
           </div>
           </div>
       </div>      <div class="col-sm-3">
@@ -91,35 +92,35 @@
           <div class="chart-title">
             CROSS-SELLING SUCCESS RATE
           </div>
-          <div class="chart-stage" style="height:80px;text-align: center;">
-            <span style="font-size:36px;" id="successrate">--</span> <span style="font-size:28px;">%</span>
+          <div class="chart-stage" style="height:50px">
+            <span style="font-size:26px;" id="successrate">--</span>%
           </div>
           </div>
       </div>
    </div>
   
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-sm-7">
       	<div class="chart-wrapper">
           <div class="chart-title">
             CHATBOT ENGAGEMENT DISTRIBUTION
           </div>
           <div class="chart-stage">
             <div id="grid-1-1">
-              <div id="chartdiv" style="width: 100%;height: 300px;"></div>
+              <div id="chartdiv" style="width: 100%;height: 350px;"></div>
             </div>
           </div>
           </div>
       </div>
       
-      <div class="col-sm-4">
+      <div class="col-sm-2">
       	<div class="chart-wrapper">
           <div class="chart-title">
             LATEST TRANSACTIONS
           </div>
           <div class="chart-stage">
             <div id="grid-1-1">
-              <div id="latest" style="width: 100%;height: 300px;">
+              <div id="latest" style="width: 100%;height: 350px;">
               	<ul id="ul-txn">
 	              	<li> SELL 10 SHARES AMZN</li>
 	              	<li> BUY 100 SHARES FB</li>
@@ -129,17 +130,53 @@
           </div>
           </div>
       </div>
-    </div>
+      <div class="col-sm-3">
+     	<div class="chart-wrapper">
+          <div class="chart-title">
+            LATEST NEWS / TWEETS
+          </div>
+          <div class="chart-stage">
+            <div id="grid-1-1">
+              <div id="news" style="width:100%;height:350px; overflow: auto">
+                            	<ul id="ul-news">
+                            	
+                            	</ul>
+              </div>
+            </div>
+          </div>
+          </div>
+      </div>
 
+
+
+
+    </div>
     <div class="row">
-    		
-      <div class="col-sm-12">
-            	<div class="chart-wrapper">
-          <div class="chart-title">DAILY USAGE PER INCOME GROUP</div>
+
+      <div class="col-sm-3">
+      	<div class="chart-wrapper">
+          <div class="chart-title">
+            KEYWORDS
+          </div>
           <div class="chart-stage">
             <div id="grid-1-1">
               <div id="chartdiv" style="width: 100%;height:260px">
-              	<div id="chart6" class="w3-container with-3d-shadow with-transitions" style="height:100%">
+              	<div id="chart2" class="w3-container with-3d-shadow with-transitions" ></div>
+              </div>
+            </div>
+          </div>
+          </div>
+      </div>
+
+      <!-- PIE Chart -->
+      <div class="col-sm-3">
+      	<div class="chart-wrapper">
+          <div class="chart-title">NEWS / TWEETS ANALYSIS</div>
+          <div class="chart-stage">
+            <div id="grid-1-1">
+              <div id="chartdiv" style="width: 100%;height:260px">
+              	<div id="chart1" class="w3-container with-3d-shadow with-transitions" >
+              			<center><span style='font-size:9pt'>Average Sentimental Score:</span>&nbsp;<span style='font-size:10pt' id='score'>0.0</span></center>
               		<svg style="height:100%;width:100%;"></svg>
               	</div>
               </div>
@@ -148,11 +185,33 @@
           </div>
         <br>
       </div>
-    </div>
-    	
+      
+      
+      <div class="col-sm-6">
+            	<div class="chart-wrapper">
+          <div class="chart-title">DAILY SENTIMENTAL ANALYSIS</div>
+          <div class="chart-stage">
+            <div id="grid-1-1">
+              <div id="chartdiv" style="width: 100%;height:260px">
+              	<div id="chart3" class="w3-container with-3d-shadow with-transitions" >
+              		<svg style="height:100%;width:100%;"></svg>
+              	</div>
+              </div>
+            </div>
+          </div>
+          </div>
+        
+
+        
+        <br>
+      </div>
     </div>
 
+    <hr>
+  </div>
 </body>
+<script src="./lib/d3cloud.js" charset="utf-8"></script>
+    <script src="./js/chart2.js"></script>
 
         <script src="./js/user.js"></script>
 </html>

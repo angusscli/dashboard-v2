@@ -48,7 +48,7 @@
 .keen-dashboard .chart-wrapper .chart-title {
   border-bottom: 1px solid #d7d7d7;
   color: #666;
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 200;
   padding: 7px 10px 4px;
 }
@@ -57,6 +57,7 @@
   overflow: hidden;
   padding: 5px 10px;
   position: relative;
+
 }
 
 .keen-dashboard .chart-wrapper .chart-notes {

@@ -39,6 +39,7 @@ console.log('Press Ctrl+C to quit.');
 
 io.on('connection', function (socket) {
 	console.log("A client is connected.");
+	/*
 	if (data!="") {
 		io.emit('chart1', data);
 	}
@@ -51,11 +52,10 @@ io.on('connection', function (socket) {
 	}
 	if (data5!="") {
 		io.emit('user',data5)
-	}
+	}*/
 	
 	io.emit('chart4', data4);
 
-    //var test = '{"type":"total","currentuser":"1","total":"1","engagement":"20","successrate":"50"}';
     
 	//io.emit('map', 1);
 });

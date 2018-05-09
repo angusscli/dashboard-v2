@@ -19,7 +19,7 @@ var chart6;
     });
 
     chart6.yAxis
-        .tickFormat(d3.format(',.2f'));
+        .tickFormat(d3.format(',.0f'));
 
     d3.select('#chart6 svg')
       .datum(chartdata6)

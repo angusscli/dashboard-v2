@@ -68,22 +68,39 @@ console.log("chart3 socket.on");
        var date = new Date(y,m,d).getTime();
        
 
-    		if ($("#ul-news").children().length>50) {
-    			$( "#ul-news li:last-child" ).remove();
-    		}
-    		
-    		var item = "<li><table><tr><td width='60' height='70'>";
-    		
-    		
 
     		if (data.type=='StockTwits') {
+        		if ($("#ul-news").children().length>50) {
+        			$( "#ul-news li:last-child" ).remove();
+        		}
+        		var item = "<li><table><tr><td width='60' height='70'>";
+        		
     			item = item+"<img src='/img/stocktwits.png' height='50'>";
+        		item = item+"</td><td style='font-size:9pt'>["+data.date+"] "+data.title+" [Score: "+data.score+"] </td></tr></table></li>";
+        	       
+        		$( "#ul-news" ).first().prepend( item );
     		} else if (data.type=='cnbc') {
-    			item = item+"<img src='/img/cnbc.png' height='50'>";
+        		if ($("#ul-news").children().length>50) {
+        			$( "#ul-news li:last-child" ).remove();
+        		}
+        		var item = "<li><table><tr><td width='60' height='70'>";
+        		
+        		item = item+"<img src='/img/cnbc.png' height='50'>";
+        		item = item+"</td><td style='font-size:9pt'>["+data.date+"] "+data.title+" [Score: "+data.score+"] </td></tr></table></li>";
+        	       
+        		$( "#ul-news" ).first().prepend( item );
+    		} else if (data.type=='twitter') {
+        		if ($("#ul-twits").children().length>50) {
+        			$( "#ul-twits li:last-child" ).remove();
+        		}
+        		var item = "<li><table><tr><td width='60' height='70'>";
+        		
+        		item = item+"<img src='/img/twitter.png' height='50'>";
+        		item = item+"</td><td style='font-size:9pt'>["+data.date+"] "+data.title+" [Score: "+data.score+"] </td></tr></table></li>";
+        	       
+        		$( "#ul-twits" ).first().prepend( item );
     		}
-    		item = item+"</td><td style='font-size:9pt'>["+data.date+"] "+data.title+" [Score: "+data.score+"] </td></tr></table></li>";
-       
-    		$( "#ul-news" ).first().prepend( item );
+
        
        if (data.score > 0) {
     	   		chartdata3[0].values.push({x:date,y:data.score,size:data.magnitude,sharp:'circle'})

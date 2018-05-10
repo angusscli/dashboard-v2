@@ -17,7 +17,7 @@ g = d.getElementsByTagName('body')[0],
 //x = w.innerWidth || e.clientWidth || g.clientWidth,
 //y = w.innerHeight|| e.clientHeight|| g.clientHeight;
 
-x = 900;
+x = 300;
 y = 338;
 
 var margin = {top: 10, right: 10, bottom: 10, left: 10},

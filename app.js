@@ -31,7 +31,7 @@ console.log('Press Ctrl+C to quit.');
 });
 */
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 80;
 server.listen(PORT, () => {
 console.log(`App listening on port ${PORT}`);
 console.log('Press Ctrl+C to quit.');
@@ -97,7 +97,6 @@ io.on('connection', function (socket) {
 	  
 	    message.ack();
 	  };
-	  
 
 	    
 subscription.on(`message`, messageHandler);
@@ -188,16 +187,19 @@ subscription3.on(`message`, messageHandler3);
 		    }
 		    
 		    var ratio = 20/max;
-
+		    var count = 0;
 		    for (var i in arr) {
-		    	var jsonArg1 = new Object();
+		    		var jsonArg1 = new Object();
 		        jsonArg1.password = i;
 		        jsonArg1.category = 'News';
 		        jsonArg1.size = arr[i]*ratio+1;
 		        
-		        if (i < 200) {
+		        
+		        if (count < 200) {
 		        		pluginArrayArg.push(jsonArg1);
 		        }
+		        		
+		        		count = count+1;
 		    }
 		    
 		    io.emit('chart2', JSON.stringify(pluginArrayArg)); 	

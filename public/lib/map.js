@@ -257,8 +257,8 @@ var mapData = [
 {"code":"SG" , "name":"Singapore", "value":1, "color":"#eea638"},
 {"code":"CH" , "name":"Switzerland", "value":1, "color":"#d8854f"},
 {"code":"TH" , "name":"Thailand", "value":1, "color":"#eea638"},
-{"code":"GB" , "name":"United Kingdom", "value":2, "color":"#d8854f"},
-{"code":"US" , "name":"United States", "value":2, "color":"#a7a737"}
+{"code":"GB" , "name":"United Kingdom", "value":1, "color":"#d8854f"},
+{"code":"US" , "name":"United States", "value":1, "color":"#a7a737"}
 ];
 
 

@@ -9,8 +9,10 @@ socket.on('user', function(value){
 	
 	chartdata6[1].values[0][1] = Number(data.total);
 
+	if (chart6!=undefined) {
     d3.select('#chart6 svg')
     .datum(chartdata6)
     .call(chart6);
+	}
 
 });

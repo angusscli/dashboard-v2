@@ -194,8 +194,10 @@ subscription3.on(`message`, messageHandler3);
 		        jsonArg1.password = i;
 		        jsonArg1.category = 'News';
 		        jsonArg1.size = arr[i]*ratio+1;
-
-		        pluginArrayArg.push(jsonArg1);
+		        
+		        if (i < 200) {
+		        		pluginArrayArg.push(jsonArg1);
+		        }
 		    }
 		    
 		    io.emit('chart2', JSON.stringify(pluginArrayArg)); 	

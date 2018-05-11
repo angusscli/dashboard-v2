@@ -248,7 +248,7 @@ latlong["ZM"] = {"latitude":-15, "longitude":30};
 latlong["ZW"] = {"latitude":-20, "longitude":30};
 
 var mapData = [
-{"code":"HK" , "name":"Hong Kong, China", "value":1, "color":"#eea638"},
+{"code":"HK" , "name":"Hong Kong, China", "value":2, "color":"#eea638"},
 {"code":"AU" , "name":"Australia", "value":1, "color":"#8aabb0"},
 {"code":"CN" , "name":"China", "value":1, "color":"#eea638"},
 {"code":"DE" , "name":"Germany", "value":1, "color":"#d8854f"},
@@ -308,7 +308,7 @@ for ( var i = 0; i < mapData.length; i++ ) {
 }
 
 // build map
-var map = AmCharts.makeChart( "chartdiv", {
+var map = AmCharts.makeChart( "mapdiv", {
   "type": "map",
   "projection": "eckert3",
   "areasSettings": {
